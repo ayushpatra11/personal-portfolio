@@ -1,6 +1,7 @@
 import React from 'react';
 import Landing from "../../components/Landing";
 import Education from './Education';
+import Footer from './Footer';
 import Projects from './Projects';
 import Skills from './Skills';
 
@@ -11,6 +12,7 @@ function Home() {
             <Education />
             <Projects />
             <Skills />
+            <Footer />
         </>
     )
 }
