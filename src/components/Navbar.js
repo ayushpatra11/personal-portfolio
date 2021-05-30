@@ -51,7 +51,7 @@ const toggleHome= () =>{
             {"#AYUSH"}
           </Link>
           <div className='menu-icon' onClick={handleClick}>
-            <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
+            <i className={click ? 'fas fa-times' : 'fas fa-bars'} style={{color: "#194350"} }/>
           </div>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
             <li className='nav-item'>
@@ -72,7 +72,18 @@ const toggleHome= () =>{
               </LinkS>
             </li>
             <li className='nav-item'>
-              <LinkS
+            
+            <LinkS
+              spy={true} smooth={true} offset={-80} duration={500} exact='true'
+                to='projects'
+                className='nav-links'
+                onClick={closeMobileMenu}
+              >
+                Projects
+              </LinkS>
+            </li>
+            <li className='nav-item'>
+            <LinkS
               spy={true} smooth={true} offset={-80} duration={500} exact='true'
                 to='skills'
                 className='nav-links'
@@ -81,7 +92,7 @@ const toggleHome= () =>{
                 Skills
               </LinkS>
             </li>
-            <li className='nav-item'>
+            {/* <li className='nav-item'>
               <LinkS
               spy={true} smooth={true} offset={-80} duration={500} exact='true'
                 to='aboutme'
@@ -90,20 +101,20 @@ const toggleHome= () =>{
               >
                 More About Me
               </LinkS>
-            </li>
+            </li> */}
 
             <li>
-              <LinkS
+              {/* <LinkS
               spy={true} smooth={true} offset={-80} duration={500} exact='true'
                 to='/contactme'
                 className='nav-links-mobile'
                 onClick={closeMobileMenu}
               >
                 Contact Me
-              </LinkS>
+              </LinkS> */}
             </li>
           </ul>
-          {button && <Button buttonStyle='btn--outline'>Contact Me</Button>}
+          {/* {button && <Button buttonStyle='btn--outline'>Contact Me</Button>} */}
         </div>
       </nav>
     </>

@@ -1,11 +1,19 @@
 import React, {useEffect} from 'react';
 import {motion, useViewportScroll, useTransform} from 'framer-motion';
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 import HxlsEdu from '../../images/hxls.png';
 import MujEdu from '../../images/muj.png';
+import Aos from 'aos';
+import Cine from '../../images/cine.png'
+
+
+const floating = keyframes`
+    0% { transform: translate(0,  0px); }
+    50%  { transform: translate(0, 18px); }
+    100%   { transform: translate(0, -0px); }
+`;
 
 const Section = styled.section`
-height: 100vh;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -43,6 +51,11 @@ flex-wrap: wrap;
     }
 `;
 
+
+
+
+// animation: ${floating} 3s ease-in-out infinite;
+
 const Image = styled(motion.img)`
 height: 100%;
 width: 100%;
@@ -66,12 +79,18 @@ box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   margin: 50px;
   width: 40%;
   position: relative;
-  
   justify-content: center;
 
 h1{
     margin: 10px;
     font-size: 1.5rem;
+    color: #194350;
+}
+
+h3{
+    padding-top: 20px;
+    margin: 20px;
+    font-size: 1rem;
     color: #194350;
 }
 
@@ -105,6 +124,7 @@ useEffect(() => {
         top:0,
         behavior: 'smooth'
     });
+    Aos.init({duration: 500});
   }, []);
 
     return (
@@ -112,6 +132,7 @@ useEffect(() => {
             <Section>
                 <Container>
                     <motion.h1
+                    data-aos="fade-down"
                     whileHover={{scale: 1.1}}
                     whileTap={{scale: 0.9}}
                     >Education</motion.h1>
@@ -120,6 +141,7 @@ useEffect(() => {
                         <Cards 
                             whileHover={{scale: 1.1}}
                             whileTap={{scale: 0.9}}
+                            data-aos="fade-right"
                         >
                         <Image src={MujEdu}
                             whileHover={{ scale: 1.2, rotate: 360 }}
@@ -128,11 +150,17 @@ useEffect(() => {
                             rotate: -360,
                             borderRadius: "100%"
                         }}></Image>
-                        <h1>MUJ</h1>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-                        </p>
+                        <h1>Manipal University Jaipur</h1>
+                        <h3>Bachelor of Technology - BTech</h3>
+                        <p>Computer Science</p>
+                        <p>2018-2022</p>
+                        <p>TMA-Pai Merit Scholarship Holder</p>
+                        <p>8.604 (Till 3rd Year)</p>
+                        <p>Other Activities: ACM (First year), Aperture (First Year)</p>
+                        
                         </Cards>
                         <Cards
+                            data-aos="fade-left"
                             whileHover={{scale: 1.1}}
                             whileTap={{scale: 0.9}}
                         > 
@@ -143,11 +171,16 @@ useEffect(() => {
                             rotate: -360,
                             borderRadius: "100%"
                         }}></Image>
-                        <h1>HXLS</h1>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-                        </p>
+                        <h1>Heritage Xperiential Learning School</h1>
+                        <h3>High School Diploma</h3>
+                        <p>Science</p>
+                        <p>2004-2018</p>
+                        <p>96.2% - 12th Grade, CBSE</p>
+                        <p>Other Activities: Click (Photography Club), Cinephilia (Videography Club)</p>
                         </Cards>
                     </Cardsdiv>
+
+                    
                 </Container>
             </Section>
         </div>

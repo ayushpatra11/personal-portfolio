@@ -1,7 +1,7 @@
 
 
 .navbar {
-  background: #194350;
+  background: transparent;
   height: 80px;
   display: flex;
   justify-content: center;
@@ -13,7 +13,7 @@
 }
 
 .navbar.active{
-  background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+  background: #fff;
   }
 
 .navbar-container {
@@ -25,7 +25,7 @@
 }
 
 .navbar-logo {
-  color: #fff;
+  color: #194350;
   justify-self: start;
   margin-left: 20px;
   cursor: pointer;
@@ -34,6 +34,7 @@
   display: flex;
   align-items: center;
 }
+
 
 .fa-typo3 {
   margin-left: 0.5rem;
@@ -56,7 +57,7 @@
 }
 
 .nav-links {
-  color: #fff;
+  color: #194350;
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -65,6 +66,7 @@
 }
 
 .nav-links:hover {
+  cursor: pointer;
   border-bottom: 4px solid #fff;
   transition: all 0.2s ease-out;
 }
@@ -89,7 +91,7 @@
   .nav-menu {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 70%;
     height: 90vh;
     position: absolute;
     top: 80px;
@@ -99,7 +101,7 @@
   }
 
   .nav-menu.active {
-    background: #242222;
+    background: #fff;
     left: 0;
     opacity: 1;
     transition: all 0.5s ease;
@@ -114,6 +116,8 @@
   }
 
   .nav-links:hover {
+    cursor: pointer;
+  transform: scale(1.1);
     background-color: #fff;
     color: #242424;
     border-radius: 0;
@@ -150,9 +154,9 @@
     text-decoration: none;
     font-size: 1.5rem;
     background-color: transparent;
-    color: #fff;
+    color: #194350;
     padding: 14px 20px;
-    border: 1px solid #fff;
+    border: 1px solid #194350;
     transition: all 0.3s ease-out;
   }
 
