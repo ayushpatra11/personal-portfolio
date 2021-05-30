@@ -21,7 +21,7 @@ background: transparent;
 const Container = styled.div`
 display: grid;
 grid-template-columns: 1fr 1fr;
-height: 100vh;
+height: 110vh;
 width: 100%;
 padding: 3rem calc((100vw-1300px) /2);
 

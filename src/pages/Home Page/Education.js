@@ -24,7 +24,6 @@ margin-bottom: 270px;
 
 const Container = styled.div`
 display: block;
-height: 100vh;
 width: 100%;
 padding: 3rem calc((100vw-1300px) /2);
 justify-content: center;
@@ -82,7 +81,7 @@ box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   justify-content: center;
 
 h1{
-    margin: 10px;
+    margin-top: 35px;
     font-size: 1.5rem;
     color: #194350;
 }
