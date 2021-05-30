@@ -32,6 +32,14 @@ const Top = styled.div`
         color: white;
         text-align: center;
     }
+
+    @media screen and (max-width: 968px){
+        p{
+        font-size: 0.8rem;
+        color: white;
+        text-align: center;
+    } 
+    }
 `;
 
 function Footer() {

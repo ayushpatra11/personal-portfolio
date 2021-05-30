@@ -56,6 +56,7 @@ position: absolute;
 width: 100%;
 max-height: 12rem;
 max-width:12rem;
+object-fit: contain;
 @media screen and (max-width: 768px){
     max-height: 8rem;
     max-width:8rem;
@@ -67,6 +68,7 @@ position: absolute;
 width: 100%;
 max-height: 26rem;
 max-width:26rem;
+object-fit: contain;
 @media screen and (max-width: 768px){
     max-height: 16rem;
     max-width:16rem;
@@ -77,6 +79,7 @@ const ImageCircle = styled(motion.img)`
 height: 100%;
 position: absolute;
 width: 100%;
+object-fit: contain;
 max-height: 10rem;
 max-width:10rem;
 @media screen and (max-width: 768px){
@@ -167,11 +170,11 @@ ${ImageMe}:nth-child(5){
 @media screen and (max-width: 768px){
     ${Image}:nth-child(1){
  top: -160px;
- right: 270px;
+ right: 210px;
 }
 
 ${Image}:nth-child(2){
- top: -5px;
+ top: -200px;
  right: 30px;
 }
 ${ImageCircle}:nth-child(3){
@@ -184,7 +187,7 @@ ${ImageCircle}:nth-child(4){
 }
 ${ImageMe}:nth-child(5){
  top: -90px;
- left: 130px;
+ left: 80px;
 }
 }
 

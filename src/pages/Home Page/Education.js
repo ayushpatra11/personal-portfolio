@@ -39,13 +39,13 @@ h1{
 `;
 
 const Cardsdiv = styled(motion.div)`
-margin: 30px;
 display: flex;
 justify-content: center;
 flex-direction: row;
+max-width: 100%;
 flex-wrap: wrap;
 @media screen and (max-width: 768px){
-    
+    max-width: 80%;
     flex-direction: column;
     }
 `;
@@ -82,6 +82,7 @@ box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 
 h1{
     margin-top: 35px;
+    margin-left: 15px;
     font-size: 1.5rem;
     color: #194350;
 }

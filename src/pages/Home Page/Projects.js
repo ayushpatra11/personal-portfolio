@@ -50,7 +50,7 @@ overflow: hidden;
 const Container = styled.div`
 display: block;
 width: 100%;
-padding: 3rem calc((100vw-1300px) /2);
+margin: 20px;
 justify-content: center;
 
 
@@ -65,7 +65,6 @@ h1{
 
 const Carddiv = styled.div`
     position: relative;
-    margin: 20px;
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
@@ -87,8 +86,8 @@ background: #fff;
   display-grid-rows: 2fr 1fr;
   transition: 0.3s;
   border-radius:40px;
-  margin: 50px;
-  width: 40%;
+  margin: 10px;
+  width: 50%;
   position: relative;
   justify-content: center;
 
