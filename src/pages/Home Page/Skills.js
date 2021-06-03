@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled, {keyframes} from 'styled-components';
+import Aos from 'aos';
 
 
 const floating1 = keyframes`
@@ -64,11 +65,15 @@ const Icon2 = styled.div`
 `;
 
 function Skills() {
+
+    useEffect( ()=>{
+        Aos.init({duration:500});
+    },[]);
     return (
         <div id="skills">
             <Section>
                <Container>
-               <h1>Skills</h1>
+               <h1 data-aos="fade-up">Skills</h1>
                     <Icons>
                         <Icon1>
                             <i style={{color: "#194350"}} class="fab fa-java"></i>

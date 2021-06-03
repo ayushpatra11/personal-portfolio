@@ -6,7 +6,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 width: 100%;
-background: #194350;
+background: #fff;
 overflow: hidden;
 flex-direction: column;
 `;
@@ -28,15 +28,16 @@ const Top = styled.div`
     display: flex;
     flex-wrap: wrap;
     p{
+        font-weight: 700;
         font-size: 1.5rem;
-        color: white;
+        color: #194350;
         text-align: center;
     }
 
     @media screen and (max-width: 968px){
         p{
         font-size: 0.8rem;
-        color: white;
+        color: #194350;
         text-align: center;
     } 
     }
@@ -55,9 +56,9 @@ function Footer() {
                         <Icon>
                         
                         </Icon>
-                    <Icon href="https://github.com/ayushpatra11" ><i style={{color: "white", cursor: "pointer"}} class="fab fa-github-square"></i></Icon>
-                    <Icon href="https://www.linkedin.com/in/ayush-patra-31b36119b/" ><i style={{color: "white", cursor: "pointer"}} class="fab fa-linkedin"></i></Icon>
-                    <Icon href="https://twitter.com/ayushpatra11" ><i style={{color: "white", cursor: "pointer"}} class="fab fa-twitter"></i></Icon>
+                    <Icon href="https://github.com/ayushpatra11" ><i style={{color: "#194350", cursor: "pointer"}} class="fab fa-github-square"></i></Icon>
+                    <Icon href="https://www.linkedin.com/in/ayush-patra-31b36119b/" ><i style={{color: "#194350", cursor: "pointer"}} class="fab fa-linkedin"></i></Icon>
+                    <Icon href="https://twitter.com/ayushpatra11" ><i style={{color: "#194350", cursor: "pointer"}} class="fab fa-twitter"></i></Icon>
                 </Container>
             </Section>
         </div>

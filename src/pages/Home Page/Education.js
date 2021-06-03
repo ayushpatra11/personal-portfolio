@@ -132,7 +132,7 @@ useEffect(() => {
             <Section>
                 <Container>
                     <motion.h1
-                    data-aos="fade-down"
+                    data-aos="fade-up"
                     whileHover={{scale: 1.1}}
                     whileTap={{scale: 0.9}}
                     >Education</motion.h1>

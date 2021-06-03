@@ -5,6 +5,7 @@ import Aos from 'aos';
 import 'aos/dist/aos.css';
 import Shoestorevid from '../../videos/shoestore.mp4'
 import Heartcare from '../../videos/heartcare.mp4'
+import AppleStore from '../../videos/applestore.mp4';
 
 const floating = keyframes`
     0% { transform: translate(0,  0px); }
@@ -142,6 +143,13 @@ function Projects() {
                                 <video style={{maxWidth:"100%", alignItems:"center"}} autoPlay="autoPlay" loop src={Heartcare} type="video/mp4" />
                             </Video>
                             <Button href="https://github.com/ayushpatra11/heart-care" >Visit Git Repository</Button>
+                            
+                        </Card>
+                        <Card data-aos="fade-right">
+                            <Video >
+                                <video style={{maxWidth:"100%", alignItems:"center"}} autoPlay="autoPlay" loop src={AppleStore} type="video/mp4" />
+                            </Video>
+                            <Button href="https://github.com/ayushpatra11/apple-store-3d/tree/master" >Visit Git Repository</Button>
                             
                         </Card>
                     </Carddiv>

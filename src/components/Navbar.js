@@ -92,16 +92,16 @@ const toggleHome= () =>{
                 Skills
               </LinkS>
             </li>
-            {/* <li className='nav-item'>
+            <li className='nav-item'>
               <LinkS
               spy={true} smooth={true} offset={-80} duration={500} exact='true'
-                to='aboutme'
+                to='internships'
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
-                More About Me
+                Internships
               </LinkS>
-            </li> */}
+            </li>
 
             <li>
               {/* <LinkS

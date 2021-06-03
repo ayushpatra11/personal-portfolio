@@ -51,6 +51,7 @@ p{
 `;
 
 const Image = styled(motion.img)`
+cursor: grab;
 height: 100%;
 position: absolute;
 width: 100%;
@@ -63,6 +64,7 @@ object-fit: contain;
 }
 `;
 const ImageMe = styled(motion.img)`
+cursor: grab;
 height: 100%;
 position: absolute;
 width: 100%;
@@ -76,6 +78,7 @@ object-fit: contain;
 `;
 
 const ImageCircle = styled(motion.img)`
+cursor: grab;
 height: 100%;
 position: absolute;
 width: 100%;
