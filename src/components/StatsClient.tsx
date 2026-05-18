@@ -134,9 +134,9 @@ export default function StatsClient({
         <div className="pt-1">
           <motion.p
             ref={ref}
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, x: -6 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.5 }}
             className="section-label"
           >
             06 — Stats
