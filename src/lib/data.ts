@@ -39,7 +39,6 @@ export const projects: Project[] = [
       'Full-stack healthcare app for browsing hospitals, booking appointments, and tracking vitals. Frontend in React, backend in Django REST framework with a team of 3.',
     tags: ['React', 'Django', 'Python', 'PostgreSQL', 'REST API'],
     github: 'https://github.com/ayushpatra11/heart-care',
-    video: '/videos/heartcare.mp4',
     featured: false,
   },
   {
@@ -48,7 +47,6 @@ export const projects: Project[] = [
       'Immersive 3D Apple Store experience with realistic product models, smooth camera transitions, and interactive UI built with Three.js and React.',
     tags: ['React', 'Three.js', 'WebGL', 'JavaScript'],
     github: 'https://github.com/ayushpatra11/apple-store-3d',
-    video: '/videos/applestore.mp4',
     featured: false,
   },
 ];

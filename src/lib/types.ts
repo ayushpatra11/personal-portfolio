@@ -4,7 +4,6 @@ export interface Project {
   tags: string[];
   github?: string;
   demo?: string;
-  video?: string;
   featured?: boolean;
 }
 
