@@ -11,16 +11,16 @@ const fade = (delay = 0) => ({
 });
 
 const marqueeItems = [
-  'Software Defined Networking',
-  'Layer 4 at 2,500 calls/sec',
-  'Neuromorphic Computing',
-  'Reads RFCs for fun',
-  'ORAN stacks',
-  'Manchester 2025',
-  'ML on network traffic',
-  'Strong tea required',
-  'Open to opportunities',
-  'Terminal dweller',
+  '97% call success rate',
+  'MSc — University of Manchester',
+  '87% ML intrusion detection accuracy',
+  'TMA-Pai Merit Scholar',
+  '99.1% call completion rate',
+  'BTech — 88% — Manipal University',
+  '92.6% CNN classification accuracy',
+  '2 years at Hughes Systique',
+  'False Alarm Rate 0.009',
+  'GreatUniHackathon — HireAI',
 ];
 
 export default function Hero() {
