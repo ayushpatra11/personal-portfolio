@@ -11,16 +11,9 @@ const fade = (delay = 0) => ({
 });
 
 const marqueeItems = [
-  '97% call success rate',
-  'MSc — University of Manchester',
-  '87% ML intrusion detection accuracy',
-  'TMA-Pai Merit Scholar',
-  '99.1% call completion rate',
-  'BTech — 88% — Manipal University',
-  '92.6% CNN classification accuracy',
-  '2 years at Hughes Systique',
-  'False Alarm Rate 0.009',
-  'GreatUniHackathon — HireAI',
+  'Software Engineer',
+  'University of Manchester',
+  'Hughes Systique',
 ];
 
 export default function Hero() {
@@ -105,13 +98,13 @@ export default function Hero() {
       >
         <motion.div
           animate={{ x: ['0%', '-50%'] }}
-          transition={{ duration: 28, repeat: Infinity, ease: 'linear' }}
+          transition={{ duration: 14, repeat: Infinity, ease: 'linear' }}
           className="flex whitespace-nowrap gap-0"
         >
-          {[...marqueeItems, ...marqueeItems].map((item, i) => (
+          {[...marqueeItems, ...marqueeItems, ...marqueeItems, ...marqueeItems].map((item, i) => (
             <span key={i} className="font-mono text-[11px] text-ink-300 tracking-wide">
               {item}
-              <span className="mx-5 text-ink-200">·</span>
+              <span className="mx-8 text-ink-200">·</span>
             </span>
           ))}
         </motion.div>
