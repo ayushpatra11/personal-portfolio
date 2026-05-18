@@ -73,13 +73,27 @@ export default function Hero() {
         </motion.div>
       </div>
 
+      {/* Scroll cue */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.8, duration: 1 }}
+        className="flex justify-center mt-16"
+      >
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ repeat: Infinity, duration: 2.4, ease: 'easeInOut', repeatDelay: 0.4 }}
+          className="w-px h-10 bg-ink-200"
+        />
+      </motion.div>
+
       {/* Thin rule at bottom */}
       <motion.div
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 1, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
         style={{ transformOrigin: 'left' }}
-        className="divider mt-20"
+        className="divider mt-6"
       />
     </section>
   );
