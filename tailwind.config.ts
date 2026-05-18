@@ -9,60 +9,30 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bg: {
-          DEFAULT: '#030712',
-          surface: '#0f172a',
-          card: '#111827',
-          border: '#1e293b',
+        cream: {
+          DEFAULT: '#f7f4ef',
+          50: '#faf8f5',
+          100: '#f7f4ef',
+          200: '#eee8dd',
+          300: '#ddd4c0',
         },
-        primary: {
-          DEFAULT: '#22d3ee',
-          dark: '#0891b2',
-          glow: 'rgba(34,211,238,0.15)',
+        ink: {
+          DEFAULT: '#1a1815',
+          900: '#1a1815',
+          700: '#3d3935',
+          500: '#6b6660',
+          300: '#a39e98',
+          100: '#d4cfc9',
         },
-        secondary: '#818cf8',
-        accent: '#a78bfa',
-        success: '#34d399',
-        warn: '#f59e0b',
       },
       fontFamily: {
-        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+        display: ['"Playfair Display"', 'Georgia', 'serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['"JetBrains Mono"', '"Fira Code"', 'monospace'],
       },
-      animation: {
-        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'float': 'float 6s ease-in-out infinite',
-        'glow': 'glow 2s ease-in-out infinite alternate',
-        'scan': 'scan 2s linear infinite',
-      },
-      keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-12px)' },
-        },
-        glow: {
-          from: { boxShadow: '0 0 10px rgba(34,211,238,0.3)' },
-          to: { boxShadow: '0 0 25px rgba(34,211,238,0.6), 0 0 50px rgba(34,211,238,0.2)' },
-        },
-        scan: {
-          '0%': { transform: 'translateY(-100%)' },
-          '100%': { transform: 'translateY(100vh)' },
-        },
-      },
-      backgroundImage: {
-        'grid-pattern': `
-          linear-gradient(rgba(34,211,238,0.04) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(34,211,238,0.04) 1px, transparent 1px)
-        `,
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-      },
-      backgroundSize: {
-        'grid': '50px 50px',
-      },
-      boxShadow: {
-        'glow-cyan': '0 0 20px rgba(34,211,238,0.3)',
-        'glow-indigo': '0 0 20px rgba(129,140,248,0.3)',
-        'card': '0 4px 24px rgba(0,0,0,0.4)',
+      fontSize: {
+        '7xl': ['4.5rem', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
+        '8xl': ['6rem', { lineHeight: '1', letterSpacing: '-0.03em' }],
       },
     },
   },

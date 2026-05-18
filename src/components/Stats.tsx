@@ -4,159 +4,106 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { GITHUB_USERNAME, LEETCODE_USERNAME } from '@/lib/data';
 
-const theme = 'transparent';
-const primaryColor = '22d3ee';
-const secondaryColor = '818cf8';
-const textColor = '94a3b8';
-const bgColor = '0f172a';
-
-function StatCard({
-  title,
-  children,
-  i,
-}: {
-  title: string;
-  children: React.ReactNode;
-  i: number;
-}) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: i * 0.15 }}
-      className="glass rounded-2xl p-6 hover:shadow-glow-cyan transition-all duration-300"
-    >
-      <h3 className="font-mono text-sm text-slate-400 mb-4 tracking-widest uppercase">{title}</h3>
-      {children}
-    </motion.div>
-  );
-}
+const highlights = [
+  { value: '97%', label: 'Call success rate — Layer 4 C++ allocation algorithm' },
+  { value: '99.1%', label: 'Call completion under 2,500 calls/second load' },
+  { value: '~30%', label: 'Efficiency gain from calibration safeguards' },
+  { value: '87%', label: 'ML intrusion detection accuracy (UNSW-NB15 dataset)' },
+  { value: '92.6%', label: 'CNN image classification accuracy on CIFAR' },
+];
 
 export default function Stats() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-100px' });
+  const inView = useInView(ref, { once: true, margin: '-80px' });
 
-  const ghStatsUrl =
+  const ghStats =
     `https://github-readme-stats.vercel.app/api?username=${GITHUB_USERNAME}` +
-    `&show_icons=true&theme=${theme}&hide_border=true` +
-    `&title_color=${primaryColor}&icon_color=${secondaryColor}&text_color=${textColor}&bg_color=${bgColor}00`;
+    `&show_icons=true&hide_border=true&bg_color=f7f4ef&title_color=1a1815&icon_color=6b6660&text_color=6b6660&hide_title=false`;
 
-  const ghLangUrl =
+  const ghLangs =
     `https://github-readme-stats.vercel.app/api/top-langs?username=${GITHUB_USERNAME}` +
-    `&layout=compact&theme=${theme}&hide_border=true` +
-    `&title_color=${primaryColor}&text_color=${textColor}&bg_color=${bgColor}00`;
-
-  const ghStreakUrl =
-    `https://github-readme-streak-stats.herokuapp.com?user=${GITHUB_USERNAME}` +
-    `&theme=transparent&hide_border=true` +
-    `&ring=${primaryColor}&fire=${secondaryColor}&currStreakLabel=${primaryColor}&sideLabels=${textColor}&dates=${textColor}&stroke=${primaryColor}20`;
+    `&layout=compact&hide_border=true&bg_color=f7f4ef&title_color=1a1815&text_color=6b6660`;
 
   const leetUrl =
-    `https://leetcard.jacoblin.cool/${LEETCODE_USERNAME}` +
-    `?theme=dark&font=source_code_pro&ext=heatmap` +
-    `&border=0&radius=12`;
+    `https://leetcard.jacoblin.cool/${LEETCODE_USERNAME}?theme=light&font=source_code_pro&ext=heatmap&border=0&radius=4`;
 
   return (
-    <section id="stats" className="relative z-10 py-28 px-6">
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          className="mb-16"
-        >
-          <p className="font-mono text-primary text-sm tracking-widest uppercase mb-2">06. stats</p>
-          <h2 className="section-title text-slate-100">
-            By The <span className="gradient-text">Numbers</span>
-          </h2>
-          <div className="w-16 h-0.5 bg-primary mt-4" />
-        </motion.div>
+    <section id="stats" className="max-w-5xl mx-auto px-6 py-24 border-t border-ink-100">
+      <div className="grid md:grid-cols-[200px_1fr] gap-12 md:gap-20">
+        <div className="pt-1">
+          <motion.p
+            ref={ref}
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.6 }}
+            className="section-label"
+          >
+            06 — Stats
+          </motion.p>
+        </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {/* GitHub stats */}
-          <StatCard title="GitHub Activity" i={0}>
-            <div className="space-y-3">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={ghStatsUrl}
-                alt="GitHub Stats"
-                className="w-full rounded-lg"
-                loading="lazy"
-              />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={ghStreakUrl}
-                alt="GitHub Streak"
-                className="w-full rounded-lg"
-                loading="lazy"
-              />
-            </div>
-          </StatCard>
+        <div>
+          <motion.h2
+            initial={{ opacity: 0, y: 12 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-display text-3xl md:text-4xl text-ink-900 mb-10 leading-snug"
+          >
+            By the numbers
+          </motion.h2>
 
-          {/* Top languages */}
-          <StatCard title="Top Languages" i={1}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={ghLangUrl}
-              alt="Top Languages"
-              className="w-full rounded-lg mb-4"
-              loading="lazy"
-            />
-            <div className="mt-4 space-y-2">
-              {[
-                { lang: 'C++', pct: 45, color: 'bg-blue-500' },
-                { lang: 'Python', pct: 30, color: 'bg-yellow-400' },
-                { lang: 'TypeScript', pct: 15, color: 'bg-secondary' },
-                { lang: 'Go', pct: 10, color: 'bg-primary' },
-              ].map(({ lang, pct, color }) => (
-                <div key={lang} className="flex items-center gap-3">
-                  <span className="font-mono text-xs text-slate-400 w-24">{lang}</span>
-                  <div className="flex-1 h-1.5 bg-slate-800 rounded-full overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={inView ? { width: `${pct}%` } : {}}
-                      transition={{ duration: 1, delay: 0.5 }}
-                      className={`h-full ${color} rounded-full`}
-                    />
-                  </div>
-                  <span className="font-mono text-xs text-slate-500 w-8">{pct}%</span>
-                </div>
+          {/* Career metrics */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mb-12"
+          >
+            <p className="section-label mb-4">Career highlights</p>
+            <div className="space-y-0">
+              {highlights.map((h, i) => (
+                <motion.div
+                  key={h.label}
+                  initial={{ opacity: 0 }}
+                  animate={inView ? { opacity: 1 } : {}}
+                  transition={{ duration: 0.4, delay: 0.3 + i * 0.07 }}
+                  className="flex items-baseline gap-6 py-3.5 border-t border-ink-100"
+                >
+                  <span className="font-display italic text-2xl text-ink-900 w-20 shrink-0">
+                    {h.value}
+                  </span>
+                  <span className="text-ink-500 text-sm">{h.label}</span>
+                </motion.div>
               ))}
             </div>
-          </StatCard>
+          </motion.div>
+
+          {/* GitHub */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="mb-10"
+          >
+            <p className="section-label mb-4">GitHub</p>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={ghStats} alt="GitHub stats" className="w-full rounded" loading="lazy" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={ghLangs} alt="Top languages" className="w-full rounded" loading="lazy" />
+            </div>
+          </motion.div>
 
           {/* LeetCode */}
-          <StatCard title="LeetCode" i={2}>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.6 }}
+          >
+            <p className="section-label mb-4">LeetCode</p>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={leetUrl}
-              alt="LeetCode Stats"
-              className="w-full rounded-xl"
-              loading="lazy"
-            />
-          </StatCard>
-
-          {/* Highlights */}
-          <StatCard title="Career Highlights" i={3}>
-            <div className="space-y-4">
-              {[
-                { value: '97%', label: 'Call success rate (Layer 4 C++ algo)', color: 'text-primary' },
-                { value: '99.1%', label: 'Call completion under 2,500 calls/sec', color: 'text-success' },
-                { value: '~30%', label: 'Efficiency gain via calibration', color: 'text-secondary' },
-                { value: '87%', label: 'ML intrusion detection accuracy', color: 'text-warn' },
-                { value: '92.6%', label: 'CNN CIFAR classification accuracy', color: 'text-accent' },
-              ].map(({ value, label, color }) => (
-                <div key={label} className="flex items-center gap-4">
-                  <span className={`font-mono font-bold text-xl ${color} w-20 shrink-0`}>{value}</span>
-                  <span className="text-slate-400 text-sm">{label}</span>
-                </div>
-              ))}
-            </div>
-          </StatCard>
+            <img src={leetUrl} alt="LeetCode stats" className="w-full max-w-md rounded" loading="lazy" />
+          </motion.div>
         </div>
       </div>
     </section>

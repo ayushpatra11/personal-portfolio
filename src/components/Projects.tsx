@@ -4,133 +4,101 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { projects } from '@/lib/data';
 
-function Tag({ label }: { label: string }) {
-  return (
-    <span className="font-mono text-xs px-2 py-0.5 rounded bg-primary/10 text-primary border border-primary/20">
-      {label}
-    </span>
-  );
-}
-
-function ProjectCard({ project, i }: { project: (typeof projects)[0]; i: number }) {
+function ProjectRow({ project, i }: { project: (typeof projects)[0]; i: number }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
+  const inView = useInView(ref, { once: true, margin: '-60px' });
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 12 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: i * 0.12 }}
-      className="group glass glass-hover rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-glow-cyan flex flex-col"
+      transition={{ duration: 0.5, delay: i * 0.07 }}
+      className="group grid md:grid-cols-[1fr_auto] gap-4 items-start py-7 border-t border-ink-100 hover:bg-cream-200/40 -mx-4 px-4 rounded transition-colors duration-300"
     >
-      {/* Video preview */}
-      {project.video && (
-        <div className="relative overflow-hidden aspect-video bg-bg-surface">
-          <video
-            src={project.video}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300 scale-[1.02] group-hover:scale-100"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-bg-card/80 via-transparent to-transparent" />
-          {project.featured && (
-            <span className="absolute top-3 right-3 font-mono text-[10px] px-2 py-0.5 rounded-full bg-primary/20 text-primary border border-primary/30">
-              featured
-            </span>
-          )}
+      <div>
+        <div className="flex items-baseline gap-3 mb-2">
+          <span className="font-mono text-[10px] text-ink-300">
+            {String(i + 1).padStart(2, '0')}
+          </span>
+          <h3 className="font-display text-lg text-ink-900 group-hover:italic transition-all duration-200">
+            {project.title}
+          </h3>
         </div>
-      )}
-
-      {/* Content */}
-      <div className="p-6 flex flex-col flex-1">
-        <h3 className="text-slate-100 font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
-          {project.title}
-        </h3>
-        <p className="text-slate-400 text-sm leading-relaxed mb-4 flex-1">{project.description}</p>
-
-        <div className="flex flex-wrap gap-1.5 mb-4">
+        <p className="text-ink-500 text-sm leading-relaxed mb-3 pl-7">{project.description}</p>
+        <div className="flex flex-wrap gap-1.5 pl-7">
           {project.tags.map((t) => (
-            <Tag key={t} label={t} />
+            <span key={t} className="tag">{t}</span>
           ))}
         </div>
-
-        <div className="flex gap-3">
-          {project.github && (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-xs text-slate-400 hover:text-primary transition-colors flex items-center gap-1.5"
-            >
-              <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-              </svg>
-              GitHub
-            </a>
-          )}
-          {project.demo && (
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-xs text-secondary hover:text-secondary/80 transition-colors flex items-center gap-1.5"
-            >
-              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-              Live Demo
-            </a>
-          )}
-        </div>
       </div>
+
+      {project.github && (
+        <a
+          href={project.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs text-ink-300 hover:text-ink-900 transition-colors duration-200 shrink-0 mt-1 tracking-wide"
+        >
+          GitHub ↗
+        </a>
+      )}
     </motion.div>
   );
 }
 
 export default function Projects() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-100px' });
+  const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="projects" className="relative z-10 py-28 px-6">
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          className="mb-16"
-        >
-          <p className="font-mono text-primary text-sm tracking-widest uppercase mb-2">02. projects</p>
-          <h2 className="section-title text-slate-100">
-            Things I've <span className="gradient-text">Built</span>
-          </h2>
-          <div className="w-16 h-0.5 bg-primary mt-4" />
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((p, i) => (
-            <ProjectCard key={p.title} project={p} i={i} />
-          ))}
+    <section id="projects" className="max-w-5xl mx-auto px-6 py-24 border-t border-ink-100">
+      <div className="grid md:grid-cols-[200px_1fr] gap-12 md:gap-20">
+        <div className="pt-1">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            ref={ref}
+            transition={{ duration: 0.6 }}
+            className="section-label"
+          >
+            02 — Projects
+          </motion.p>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.5 }}
-          className="mt-10 text-center"
-        >
-          <a
-            href="https://github.com/ayushpatra11"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-mono text-sm text-slate-400 hover:text-primary transition-colors"
+        <div>
+          <motion.h2
+            initial={{ opacity: 0, y: 12 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-display text-3xl md:text-4xl text-ink-900 mb-8 leading-snug"
           >
-            View more on GitHub →
-          </a>
-        </motion.div>
+            Selected work
+          </motion.h2>
+
+          <div>
+            {projects.map((p, i) => (
+              <ProjectRow key={p.title} project={p} i={i} />
+            ))}
+          </div>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="mt-8 text-sm text-ink-300"
+          >
+            More on{' '}
+            <a
+              href="https://github.com/ayushpatra11"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-ink-500 hover:text-ink-900 transition-colors border-b border-ink-200 pb-px"
+            >
+              github.com/ayushpatra11
+            </a>
+          </motion.p>
+        </div>
       </div>
     </section>
   );
