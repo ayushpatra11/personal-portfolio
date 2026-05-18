@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 
 const fade = (delay = 0) => ({
@@ -9,10 +10,24 @@ const fade = (delay = 0) => ({
   transition: { duration: 0.7, delay, ease: [0.25, 0.1, 0.25, 1] },
 });
 
+const marqueeItems = [
+  'Software Engineer',
+  'University of Manchester',
+  'Hughes Systique',
+];
+
 export default function Hero() {
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  });
+  const photoY = useTransform(scrollYProgress, [0, 1], [0, -30]);
+
   return (
     <section
       id="hero"
+      ref={heroRef}
       className="min-h-screen flex flex-col justify-center max-w-5xl mx-auto px-6 pt-24 pb-16"
     >
       <div className="grid md:grid-cols-[1fr_auto] gap-12 items-end">
@@ -54,11 +69,12 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Photo */}
+        {/* Photo with parallax */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.4 }}
+          style={{ y: photoY }}
           className="hidden md:block"
         >
           <div className="relative w-52 h-64 rounded-sm overflow-hidden bg-cream-200">
@@ -73,12 +89,33 @@ export default function Hero() {
         </motion.div>
       </div>
 
+      {/* Marquee ribbon */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 0.8 }}
+        className="mt-16 border-t border-b border-ink-100 py-3 overflow-hidden"
+      >
+        <motion.div
+          animate={{ x: ['0%', '-50%'] }}
+          transition={{ duration: 14, repeat: Infinity, ease: 'linear' }}
+          className="flex whitespace-nowrap gap-0"
+        >
+          {[...marqueeItems, ...marqueeItems, ...marqueeItems, ...marqueeItems].map((item, i) => (
+            <span key={i} className="font-mono text-[11px] text-ink-300 tracking-wide">
+              {item}
+              <span className="mx-8 text-ink-200">·</span>
+            </span>
+          ))}
+        </motion.div>
+      </motion.div>
+
       {/* Scroll cue */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.8, duration: 1 }}
-        className="flex justify-center mt-16"
+        className="flex justify-center mt-10"
       >
         <motion.div
           animate={{ y: [0, 6, 0] }}

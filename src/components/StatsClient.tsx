@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useSpring, useTransform } from 'framer-motion';
 import type { GitHubStats } from '@/lib/github';
 
 const highlights = [
@@ -19,10 +19,46 @@ interface LeetCodeData {
   hard: number;
 }
 
-function Stat({ label, value }: { label: string; value: string | number }) {
+// Animates a formatted string like "97%", "~30%", "99.1%" from zero
+function CountUp({ value, inView }: { value: string; inView: boolean }) {
+  const match = value.match(/^(~?)(\d+\.?\d*)(.*)$/);
+  const prefix = match ? match[1] : '';
+  const num = match ? parseFloat(match[2]) : 0;
+  const suffix = match ? match[3] : value;
+  const decimals = match && match[2].includes('.') ? match[2].split('.')[1].length : 0;
+
+  const spring = useSpring(0, { stiffness: 45, damping: 18 });
+  const display = useTransform(spring, (v) =>
+    match
+      ? `${prefix}${decimals > 0 ? v.toFixed(decimals) : Math.round(v)}${suffix}`
+      : value
+  );
+
+  useEffect(() => {
+    if (inView && match) spring.set(num);
+  }, [inView, num, spring, match]);
+
+  return <motion.span>{display}</motion.span>;
+}
+
+// Animates a plain integer from zero
+function CountUpNum({ value, inView }: { value: number; inView: boolean }) {
+  const spring = useSpring(0, { stiffness: 45, damping: 18 });
+  const display = useTransform(spring, (v) => Math.round(v).toString());
+
+  useEffect(() => {
+    if (inView) spring.set(value);
+  }, [inView, value, spring]);
+
+  return <motion.span>{display}</motion.span>;
+}
+
+function AnimatedStat({ label, value, inView }: { label: string; value: number; inView: boolean }) {
   return (
     <div className="py-4 border-t border-ink-100">
-      <div className="font-display italic text-2xl text-ink-900">{value}</div>
+      <div className="font-display italic text-2xl text-ink-900">
+        <CountUpNum value={value} inView={inView} />
+      </div>
       <div className="text-xs text-ink-300 mt-0.5">{label}</div>
     </div>
   );
@@ -153,7 +189,7 @@ export default function StatsClient({
             By the numbers
           </motion.h2>
 
-          {/* Career highlights */}
+          {/* Career highlights with count-up */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -169,13 +205,15 @@ export default function StatsClient({
                 transition={{ duration: 0.4, delay: 0.3 + i * 0.06 }}
                 className="flex items-baseline gap-6 py-3.5 border-t border-ink-100"
               >
-                <span className="font-display italic text-2xl text-ink-900 w-20 shrink-0">{h.value}</span>
+                <span className="font-display italic text-2xl text-ink-900 w-20 shrink-0">
+                  <CountUp value={h.value} inView={inView} />
+                </span>
                 <span className="text-ink-500 text-sm">{h.label}</span>
               </motion.div>
             ))}
           </motion.div>
 
-          {/* GitHub */}
+          {/* GitHub with count-up stats */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -195,9 +233,9 @@ export default function StatsClient({
             </p>
 
             <div className="grid grid-cols-3 gap-0 mt-2">
-              <Stat label="public repos" value={gh.publicRepos} />
-              <Stat label="total stars" value={gh.totalStars} />
-              <Stat label="followers" value={gh.followers} />
+              <AnimatedStat label="public repos" value={gh.publicRepos} inView={inView} />
+              <AnimatedStat label="total stars" value={gh.totalStars} inView={inView} />
+              <AnimatedStat label="followers" value={gh.followers} inView={inView} />
             </div>
 
             {/* GitHub contribution graph */}
