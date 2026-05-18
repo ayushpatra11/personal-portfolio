@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f7f4ef;
+  color: #1a1815;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: #e8e2d6;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #f7f4ef;
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc8c2;
+  border-radius: 2px;
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+  .section-label {
+    @apply font-mono text-[11px] tracking-[0.2em] uppercase text-ink-300;
+  }
+  .divider {
+    @apply border-t border-ink-100;
+  }
+  .tag {
+    @apply font-mono text-[11px] text-ink-500 border border-ink-100 px-2 py-0.5 rounded-sm;
+  }
+}
