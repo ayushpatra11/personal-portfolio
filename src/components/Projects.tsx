@@ -18,7 +18,7 @@ function ProjectRow({ project, i }: { project: (typeof projects)[0]; i: number }
     >
       <div>
         <div className="flex items-baseline gap-3 mb-2">
-          <span className="font-mono text-[10px] text-ink-300">
+          <span className="font-mono text-[10px] text-ink-300 group-hover:text-ink-500 transition-colors duration-300">
             {String(i + 1).padStart(2, '0')}
           </span>
           <h3 className="font-display text-lg text-ink-900 group-hover:italic transition-all duration-200">

@@ -49,5 +49,10 @@ body {
   }
   .tag {
     @apply font-mono text-[11px] text-ink-500 border border-ink-100 px-2 py-0.5 rounded-sm;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+  }
+  .tag:hover {
+    transform: translateY(-1px);
+    @apply border-ink-300;
   }
 }
