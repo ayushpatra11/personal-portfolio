@@ -69,7 +69,7 @@ export default function Hero() {
         >
           <div className="relative w-52 h-64 rounded-sm overflow-hidden bg-cream-200">
             <Image
-              src="/images/me.png"
+              src="/images/me.jpg"
               alt="Ayush Patra"
               fill
               className="object-cover grayscale"
