@@ -30,21 +30,15 @@ export default function Hero() {
             <em>Patra.</em>
           </motion.h1>
 
-          <motion.p {...fade(0.2)} className="text-ink-500 text-lg max-w-xl leading-relaxed mb-4">
+          <motion.p {...fade(0.2)} className="text-ink-500 text-lg max-w-xl leading-relaxed mb-8">
             Software engineer with a background in{' '}
-            <em className="font-display italic text-ink-700">telecoms and networking</em> —
-            two years building low-latency systems for 5G infrastructure at Hughes Systique,
-            now finishing an MSc in Advanced Computer Science at the University of Manchester.
+            <em className="font-display italic text-ink-700">Software Defined Networking</em> —
+            two years building low-latency systems for Satellite Communication and ORAN
+            infrastructure at Hughes Systique, recently completed an MSc in Advanced Computer
+            Science at the University of Manchester.
           </motion.p>
 
-          <motion.p {...fade(0.25)} className="text-ink-300 text-sm mb-8">
-            Interviewed at{' '}
-            <span className="text-ink-500">Google</span>,{' '}
-            <span className="text-ink-500">Cloudflare</span> &amp;{' '}
-            <span className="text-ink-500">Canonical</span>.
-          </motion.p>
-
-          <motion.div {...fade(0.35)} className="flex flex-wrap gap-6 items-center">
+          <motion.div {...fade(0.3)} className="flex flex-wrap gap-6 items-center">
             <a
               href="#projects"
               className="text-sm text-ink-900 border-b border-ink-900 pb-px hover:text-ink-500 hover:border-ink-500 transition-colors duration-200"
@@ -69,7 +63,7 @@ export default function Hero() {
         >
           <div className="relative w-52 h-64 rounded-sm overflow-hidden bg-cream-200">
             <Image
-              src="/images/me.jpg"
+              src="/images/me.png"
               alt="Ayush Patra"
               fill
               className="object-cover grayscale"
