@@ -104,29 +104,17 @@ export default function StatsClient({
               <Stat label="followers" value={gh.followers} />
             </div>
 
-            {/* Language breakdown */}
-            {gh.topLanguages.length > 0 && (
-              <div className="mt-6 pt-5 border-t border-ink-100">
-                <p className="text-xs text-ink-300 mb-3 tracking-wide uppercase font-mono">Top languages</p>
-                <div className="space-y-2.5">
-                  {gh.topLanguages.map(({ lang, pct }) => (
-                    <div key={lang} className="flex items-center gap-4">
-                      <span className="text-sm text-ink-500 w-24 shrink-0">{lang}</span>
-                      <div className="flex-1 h-px bg-ink-100 relative">
-                        <motion.div
-                          initial={{ scaleX: 0 }}
-                          animate={inView ? { scaleX: 1 } : {}}
-                          transition={{ duration: 0.8, delay: 0.7 }}
-                          style={{ width: `${pct}%`, transformOrigin: 'left' }}
-                          className="absolute top-0 left-0 h-px bg-ink-500"
-                        />
-                      </div>
-                      <span className="font-mono text-xs text-ink-300 w-8 text-right">{pct}%</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+            {/* GitHub contribution graph */}
+            <div className="mt-8 pt-5 border-t border-ink-100">
+              <p className="text-xs text-ink-300 mb-4 tracking-wide uppercase font-mono">Contribution activity</p>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://ghchart.rshah.org/6b6660/ayushpatra11"
+                alt="GitHub contribution graph"
+                className="w-full"
+                loading="lazy"
+              />
+            </div>
           </motion.div>
 
           {/* LeetCode */}
@@ -140,25 +128,15 @@ export default function StatsClient({
               href={`https://leetcode.com/${leetcodeUsername}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex flex-col gap-3 p-6 border border-ink-100 rounded-sm hover:border-ink-300 transition-colors duration-200 group w-full max-w-sm"
+              className="block hover:opacity-90 transition-opacity duration-200"
             >
-              <div className="flex items-center justify-between">
-                <span className="font-display italic text-ink-700 text-lg">{leetcodeUsername}</span>
-                <svg
-                  className="w-4 h-4 text-ink-300 group-hover:text-ink-700 transition-colors"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
-              </div>
-              <p className="text-xs text-ink-300">View full profile &amp; solve history on LeetCode →</p>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={`https://leetcard.jacoblin.cool/${leetcodeUsername}?theme=light&font=Karma&hide=ranking&border=1&radius=4`}
+                alt="LeetCode stats"
+                className="w-full max-w-sm"
+                loading="lazy"
+              />
             </a>
           </motion.div>
         </div>
