@@ -7,7 +7,7 @@ export const projects: Project[] = [
   {
     title: 'Neuromorphic Routing on Network-on-Chip',
     description:
-      'MSc dissertation. C++ pipeline comparing fast, accurate, and energy-aware spike routing techniques for neuromorphic platforms. Derived intermediate SNN representations using SNNTorch in Python and benchmarked two routing algorithms at scale.',
+      'MSc dissertation. A C++ pipeline benchmarking fast, accurate, and energy-aware spike routing techniques for neuromorphic platforms. SNN representations were derived using SNNTorch in Python, with two routing algorithms evaluated at scale.',
     tags: ['C++', 'Python', 'SNNTorch', 'NoC', 'Neuromorphic Computing', 'Systems'],
     github: 'https://github.com/ayushpatra11/NeuromorphicModelling',
     featured: true,
@@ -15,14 +15,14 @@ export const projects: Project[] = [
   {
     title: 'Intrusion Detection — ML on Network Traffic',
     description:
-      'Trained a supervised learning model to classify network traffic as benign or malicious using the UNSW-NB15 dataset. Achieved 87% test accuracy with a False Alarm Rate of 0.009.',
+      'Supervised learning model trained to classify network traffic as benign or malicious on the UNSW-NB15 dataset, achieving 87% test accuracy and a False Alarm Rate of 0.009.',
     tags: ['Python', 'Scikit-Learn', 'ML', 'Network Security', 'UNSW-NB15'],
     featured: true,
   },
   {
-    title: 'netvisor — Canonical Networking CLI',
+    title: 'netvisor — Kernel Networking CLI',
     description:
-      "Personal CLI tool for supervising kernel network configuration across Canonical's networking suite — LXD, MAAS, OVN and Kubernetes — allowing resource allocation without clashes. Currently in active development.",
+      'CLI tool for orchestrating kernel network configuration in environments that use LXD, MAAS, OVN and Kubernetes. Designed to surface conflicts across multiple networking layers and prevent resource allocation clashes. Currently in active development.',
     tags: ['Go', 'Linux Kernel', 'LXD', 'MAAS', 'OVN', 'Kubernetes', 'Networking', 'CLI'],
     github: 'https://github.com/ayushpatra11/netvisor',
     featured: true,
@@ -39,7 +39,7 @@ export const career: CareerItem[] = [
       'Designed an end-to-end low-latency call resource allocation algorithm for Layer 4 in C++, achieving a 97% call success rate and increasing calibration efficiency by ~30%.',
       'Enhanced proprietary telecom simulators in Python for heavy call-load scenarios, hitting a 99.1% call completion rate.',
       'Conducted runtime profiling, fault analysis, and performance tuning under peak loads of 2,500 calls/second.',
-      'Built a ReactJS + SQLite3 full-stack ETL application displaying live xApp traffic with 100% accuracy; integrated custom xApps with the OAI 5G core via containerisation.',
+      'Built a ReactJS and SQLite3 ETL dashboard displaying live xApp traffic in real time; integrated custom xApps with the OAI 5G core via containerisation.',
     ],
     tags: ['C++', 'Python', '5G / OAI', 'ORAN', 'ReactJS', 'SQLite3', 'System Design', 'Unit Testing', 'GDB / Valgrind', 'Fault Analysis', 'CI / CD'],
     current: false,

@@ -33,9 +33,9 @@ export default function Hero() {
           <motion.p {...fade(0.2)} className="text-ink-500 text-lg max-w-xl leading-relaxed mb-8">
             Software engineer with a background in{' '}
             <em className="font-display italic text-ink-700">Software Defined Networking</em> —
-            two years building low-latency systems for Satellite Communication and ORAN
-            infrastructure at Hughes Systique, recently completed an MSc in Advanced Computer
-            Science at the University of Manchester.
+            two years building low-latency systems for satellite communication and ORAN
+            infrastructure at Hughes Systique, and an MSc in Advanced Computer Science
+            from the University of Manchester.
           </motion.p>
 
           <motion.div {...fade(0.3)} className="flex flex-wrap gap-6 items-center">
@@ -66,7 +66,7 @@ export default function Hero() {
               src="/images/me.png"
               alt="Ayush Patra"
               fill
-              className="object-cover grayscale"
+              className="object-cover"
               priority
             />
           </div>
