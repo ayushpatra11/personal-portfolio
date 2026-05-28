@@ -1,3 +1,5 @@
+import Cursor from '@/components/Cursor';
+import PageCurtain from '@/components/PageCurtain';
 import Navbar from '@/components/Navbar';
 import ScrollProgress from '@/components/ScrollProgress';
 import Hero from '@/components/Hero';
@@ -12,6 +14,8 @@ import Footer from '@/components/Footer';
 export default function Home() {
   return (
     <>
+      <PageCurtain />
+      <Cursor />
       <ScrollProgress />
       <Navbar />
       <main>

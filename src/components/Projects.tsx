@@ -14,8 +14,14 @@ function ProjectRow({ project, i }: { project: (typeof projects)[0]; i: number }
       initial={{ opacity: 0, y: 12 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: i * 0.07 }}
-      className="group grid md:grid-cols-[1fr_auto] gap-4 items-start py-7 border-t border-ink-100 hover:bg-cream-200/40 -mx-4 px-4 rounded transition-colors duration-300"
+      className="group relative grid md:grid-cols-[1fr_auto] gap-4 items-start py-7 border-t border-ink-100 hover:bg-cream-200/40 -mx-4 px-4 rounded transition-colors duration-300"
     >
+      {/* Ghost title reveal */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none select-none flex items-center">
+        <span className="font-display italic leading-none text-ink-900/[0.055] whitespace-nowrap pl-7 text-[2.5rem] md:text-[3.5rem] opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)]">
+          {project.title}
+        </span>
+      </div>
       <div>
         <div className="flex items-baseline gap-3 mb-2">
           <span className="font-mono text-[10px] text-ink-300 group-hover:text-ink-500 transition-colors duration-300">
@@ -54,27 +60,32 @@ export default function Projects() {
   return (
     <section id="projects" className="max-w-5xl mx-auto px-6 py-24 border-t border-ink-100">
       <div className="grid md:grid-cols-[200px_1fr] gap-12 md:gap-20">
-        <div className="pt-1">
+        <div className="pt-1 relative">
+          <span aria-hidden className="absolute top-0 right-0 font-display font-bold text-[5rem] leading-none text-ink-100 select-none pointer-events-none">
+            02
+          </span>
           <motion.p
             initial={{ opacity: 0, x: -6 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             ref={ref}
             transition={{ duration: 0.5 }}
-            className="section-label"
+            className="section-label relative z-10"
           >
             02 — Projects
           </motion.p>
         </div>
 
         <div>
-          <motion.h2
-            initial={{ opacity: 0, y: 12 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display text-3xl md:text-4xl text-ink-900 mb-8 leading-snug"
-          >
-            Selected work
-          </motion.h2>
+          <div className="overflow-hidden mb-8">
+            <motion.h2
+              initial={{ y: '105%' }}
+              animate={inView ? { y: '0%' } : {}}
+              transition={{ duration: 0.85, delay: 0.1, ease: [0.76, 0, 0.24, 1] }}
+              className="font-display text-3xl md:text-4xl text-ink-900 leading-snug"
+            >
+              Selected work
+            </motion.h2>
+          </div>
 
           <div>
             {projects.map((p, i) => (

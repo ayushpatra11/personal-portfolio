@@ -1,20 +1,48 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import Image from 'next/image';
 
-const fade = (delay = 0) => ({
-  initial: { opacity: 0, y: 16 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.7, delay, ease: [0.25, 0.1, 0.25, 1] },
-});
+const revealEase = [0.76, 0, 0.24, 1] as const;
 
 const marqueeItems = [
   'Software Engineer',
   'University of Manchester',
   'Hughes Systique',
 ];
+
+function MagneticLink({
+  href,
+  children,
+  className,
+}: {
+  href: string;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  const ref = useRef<HTMLAnchorElement>(null);
+  const x = useSpring(0, { stiffness: 180, damping: 14, restDelta: 0.01 });
+  const y = useSpring(0, { stiffness: 180, damping: 14, restDelta: 0.01 });
+
+  return (
+    <motion.a
+      ref={ref}
+      href={href}
+      style={{ x, y }}
+      onMouseMove={(e) => {
+        const r = ref.current?.getBoundingClientRect();
+        if (!r) return;
+        x.set((e.clientX - (r.left + r.width / 2)) * 0.3);
+        y.set((e.clientY - (r.top + r.height / 2)) * 0.3);
+      }}
+      onMouseLeave={() => { x.set(0); y.set(0); }}
+      className={className}
+    >
+      {children}
+    </motion.a>
+  );
+}
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -32,52 +60,85 @@ export default function Hero() {
     >
       <div className="grid md:grid-cols-[1fr_auto] gap-12 items-end">
         <div>
-          <motion.p {...fade(0)} className="section-label mb-6">
+          <motion.p
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            className="section-label mb-6"
+          >
             Software Engineer · Manchester, UK
           </motion.p>
 
-          <motion.h1
-            {...fade(0.1)}
-            className="font-display text-6xl md:text-7xl lg:text-8xl text-ink-900 leading-[1.05] mb-6"
+          <h1 className="font-display text-6xl md:text-7xl lg:text-8xl text-ink-900 leading-[1.05] mb-6">
+            <div className="overflow-hidden">
+              <motion.span
+                className="block"
+                initial={{ y: '105%' }}
+                animate={{ y: '0%' }}
+                transition={{ duration: 0.9, delay: 0.1, ease: revealEase }}
+              >
+                Ayush
+              </motion.span>
+            </div>
+            <div className="overflow-hidden">
+              <motion.span
+                className="block"
+                initial={{ y: '105%' }}
+                animate={{ y: '0%' }}
+                transition={{ duration: 0.9, delay: 0.22, ease: revealEase }}
+              >
+                <em>Patra.</em>
+              </motion.span>
+            </div>
+          </h1>
+
+          <div className="overflow-hidden mb-8">
+            <motion.p
+              initial={{ y: '105%' }}
+              animate={{ y: '0%' }}
+              transition={{ duration: 0.85, delay: 0.38, ease: revealEase }}
+              className="text-ink-500 text-lg max-w-xl leading-relaxed"
+            >
+              Software engineer with a background in{' '}
+              <em className="font-display italic text-ink-700">Software Defined Networking</em> —
+              two years building low-latency systems for satellite communication and ORAN
+              infrastructure at Hughes Systique, and an MSc in Advanced Computer Science
+              from the University of Manchester.
+            </motion.p>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="flex flex-wrap gap-6 items-center"
           >
-            Ayush
-            <br />
-            <em>Patra.</em>
-          </motion.h1>
-
-          <motion.p {...fade(0.2)} className="text-ink-500 text-lg max-w-xl leading-relaxed mb-8">
-            Software engineer with a background in{' '}
-            <em className="font-display italic text-ink-700">Software Defined Networking</em> —
-            two years building low-latency systems for satellite communication and ORAN
-            infrastructure at Hughes Systique, and an MSc in Advanced Computer Science
-            from the University of Manchester.
-          </motion.p>
-
-          <motion.div {...fade(0.3)} className="flex flex-wrap gap-6 items-center">
-            <a
+            <MagneticLink
               href="#projects"
               className="text-sm text-ink-900 border-b border-ink-900 pb-px hover:text-ink-500 hover:border-ink-500 transition-colors duration-200"
             >
               View work ↓
-            </a>
-            <a
+            </MagneticLink>
+            <MagneticLink
               href="mailto:ayushpatra11@gmail.com"
               className="text-sm text-ink-500 hover:text-ink-900 transition-colors duration-200"
             >
               Get in touch →
-            </a>
+            </MagneticLink>
           </motion.div>
         </div>
 
-        {/* Photo with parallax */}
+        {/* Photo: parallax + clip-path reveal */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.4 }}
           style={{ y: photoY }}
           className="hidden md:block"
         >
-          <div className="relative w-52 h-64 rounded-sm overflow-hidden bg-cream-200">
+          <motion.div
+            initial={{ clipPath: 'inset(100% 0 0 0)' }}
+            animate={{ clipPath: 'inset(0% 0 0 0)' }}
+            transition={{ duration: 1.1, delay: 0.3, ease: revealEase }}
+            className="relative w-52 h-64 rounded-sm overflow-hidden bg-cream-200"
+          >
             <Image
               src="/images/me.png"
               alt="Ayush Patra"
@@ -85,7 +146,7 @@ export default function Hero() {
               className="object-cover"
               priority
             />
-          </div>
+          </motion.div>
         </motion.div>
       </div>
 
