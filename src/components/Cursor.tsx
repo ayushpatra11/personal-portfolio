@@ -59,7 +59,7 @@ export default function Cursor() {
           scale: { type: 'spring', stiffness: 180, damping: 18 },
           opacity: { duration: 0.3 },
         }}
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-ink-900 pointer-events-none z-[9999]"
+        className="fixed top-0 left-0 w-8 h-8 rounded-full bg-white pointer-events-none z-[9999] mix-blend-difference"
       />
       {/* Dot */}
       <motion.div
@@ -69,7 +69,7 @@ export default function Cursor() {
           opacity: visible ? 1 : 0,
         }}
         transition={{ scale: { duration: 0.15 }, opacity: { duration: 0.3 } }}
-        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-ink-900 pointer-events-none z-[9999]"
+        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-white pointer-events-none z-[9999] mix-blend-difference"
       />
     </>
   );

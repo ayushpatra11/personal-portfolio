@@ -14,8 +14,14 @@ function ProjectRow({ project, i }: { project: (typeof projects)[0]; i: number }
       initial={{ opacity: 0, y: 12 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: i * 0.07 }}
-      className="group grid md:grid-cols-[1fr_auto] gap-4 items-start py-7 border-t border-ink-100 hover:bg-cream-200/40 -mx-4 px-4 rounded transition-colors duration-300"
+      className="group relative grid md:grid-cols-[1fr_auto] gap-4 items-start py-7 border-t border-ink-100 hover:bg-cream-200/40 -mx-4 px-4 rounded transition-colors duration-300"
     >
+      {/* Ghost title reveal */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none select-none flex items-center">
+        <span className="font-display italic leading-none text-ink-900/[0.055] whitespace-nowrap pl-7 text-[2.5rem] md:text-[3.5rem] opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)]">
+          {project.title}
+        </span>
+      </div>
       <div>
         <div className="flex items-baseline gap-3 mb-2">
           <span className="font-mono text-[10px] text-ink-300 group-hover:text-ink-500 transition-colors duration-300">
