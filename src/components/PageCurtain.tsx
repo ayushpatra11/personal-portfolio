@@ -24,7 +24,7 @@ export default function PageCurtain() {
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.15 }}
-            className="font-display italic text-cream-100 text-2xl tracking-wide select-none"
+            className="font-display italic text-cream-100 text-5xl md:text-7xl tracking-wide select-none"
           >
             Ayush Patra.
           </motion.span>
