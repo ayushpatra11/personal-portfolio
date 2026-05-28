@@ -1,3 +1,4 @@
+import Cursor from '@/components/Cursor';
 import Navbar from '@/components/Navbar';
 import ScrollProgress from '@/components/ScrollProgress';
 import Hero from '@/components/Hero';
@@ -12,6 +13,7 @@ import Footer from '@/components/Footer';
 export default function Home() {
   return (
     <>
+      <Cursor />
       <ScrollProgress />
       <Navbar />
       <main>

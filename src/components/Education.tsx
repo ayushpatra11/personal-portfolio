@@ -47,27 +47,32 @@ export default function Education() {
   return (
     <section id="education" className="max-w-5xl mx-auto px-6 py-24 border-t border-ink-100">
       <div className="grid md:grid-cols-[200px_1fr] gap-12 md:gap-20">
-        <div className="pt-1">
+        <div className="pt-1 relative">
+          <span aria-hidden className="absolute top-0 right-0 font-display font-bold text-[5rem] leading-none text-ink-100 select-none pointer-events-none">
+            04
+          </span>
           <motion.p
             ref={ref}
             initial={{ opacity: 0, x: -6 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="section-label"
+            className="section-label relative z-10"
           >
             04 — Education
           </motion.p>
         </div>
 
         <div>
-          <motion.h2
-            initial={{ opacity: 0, y: 12 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display text-3xl md:text-4xl text-ink-900 mb-2 leading-snug"
-          >
-            Academic background
-          </motion.h2>
+          <div className="overflow-hidden mb-2">
+            <motion.h2
+              initial={{ y: '105%' }}
+              animate={inView ? { y: '0%' } : {}}
+              transition={{ duration: 0.85, delay: 0.1, ease: [0.76, 0, 0.24, 1] }}
+              className="font-display text-3xl md:text-4xl text-ink-900 leading-snug"
+            >
+              Academic background
+            </motion.h2>
+          </div>
 
           <div>
             {education.map((item, i) => (
