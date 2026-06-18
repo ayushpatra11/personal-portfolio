@@ -31,6 +31,15 @@ export const projects: Project[] = [
 
 export const career: CareerItem[] = [
   {
+    company: 'Undisclosed',
+    role: 'Software Engineer',
+    period: 'Jul 2026 – Present',
+    location: 'Remote, UK',
+    description: ['Details to be announced.'],
+    tags: [],
+    current: true,
+  },
+  {
     company: 'Hughes Systique Corporation',
     role: 'Software Developer Engineer',
     period: 'Jul 2022 – Aug 2024',
