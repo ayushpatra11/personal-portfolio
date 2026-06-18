@@ -30,7 +30,7 @@ function EduEntry({ item, i }: { item: (typeof education)[0]; i: number }) {
 
       <ul className="space-y-1">
         {item.achievements.map((a) => (
-          <li key={a} className="text-ink-400 text-sm flex gap-3">
+          <li key={a} className="text-ink-500 text-sm flex gap-3">
             <span className="text-ink-200 shrink-0">—</span>
             {a}
           </li>
