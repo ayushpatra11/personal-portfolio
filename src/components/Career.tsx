@@ -29,7 +29,7 @@ function CareerEntry({ item, i }: { item: (typeof career)[0]; i: number }) {
       <ul className="space-y-2 mb-4">
         {item.description.map((d, j) => (
           <li key={j} className="text-ink-500 text-sm leading-relaxed flex gap-3">
-            <span className="text-ink-200 mt-0.5 shrink-0">—</span>
+            <span className="text-ink-100 mt-0.5 shrink-0">—</span>
             {d}
           </li>
         ))}

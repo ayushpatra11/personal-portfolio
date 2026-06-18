@@ -28,10 +28,10 @@ function EduEntry({ item, i }: { item: (typeof education)[0]; i: number }) {
         <span className="font-mono text-xs text-ink-300 shrink-0">{item.period}</span>
       </div>
 
-      <ul className="space-y-1">
+      <ul className="space-y-2">
         {item.achievements.map((a) => (
-          <li key={a} className="text-ink-400 text-sm flex gap-3">
-            <span className="text-ink-200 shrink-0">—</span>
+          <li key={a} className="text-ink-500 text-sm leading-relaxed flex gap-3">
+            <span className="text-ink-100 mt-0.5 shrink-0">—</span>
             {a}
           </li>
         ))}
