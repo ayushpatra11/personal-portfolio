@@ -33,7 +33,7 @@ export const career: CareerItem[] = [
   {
     company: 'Canonical',
     role: 'Software Engineer 1 (Prof 1)',
-    period: 'Jul 2026 – Present',
+    period: 'Aug 2026 – Present',
     location: 'Remote, UK',
     description: [
       'Hired by Mr. Mark Shuttleworth, building Kubernetes networking infrastructure on the Linux kernel stack, as the first dedicated networking engineer on the team.',
