@@ -62,7 +62,7 @@ export default function Projects() {
       <div className="grid md:grid-cols-[200px_1fr] gap-12 md:gap-20">
         <div className="pt-1 relative">
           <span aria-hidden className="absolute top-0 right-0 font-display font-bold text-[5rem] leading-none text-ink-100 select-none pointer-events-none">
-            02
+            04
           </span>
           <motion.p
             initial={{ opacity: 0, x: -6 }}
@@ -71,7 +71,7 @@ export default function Projects() {
             transition={{ duration: 0.5 }}
             className="section-label relative z-10"
           >
-            02 — Projects
+            04 — Projects
           </motion.p>
         </div>
 

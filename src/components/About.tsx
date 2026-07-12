@@ -53,8 +53,13 @@ export default function About() {
             className="text-ink-500 space-y-4 leading-relaxed mb-12"
           >
             <p>
-              At Hughes Systique, I worked on Layer 4 for satellite communication and ORAN
-              stacks — the kind of work where a 1% improvement in call success rate means
+              I am joining Canonical in August 2026 as Software Engineer 1, building Kubernetes
+              networking infrastructure on the Linux kernel stack — the first dedicated networking
+              engineer on the team, in a role created by Mark Shuttleworth.
+            </p>
+            <p>
+              Before that, at Hughes Systique I worked on Layer 4 for satellite communication and
+              ORAN stacks — the kind of work where a 1% improvement in call success rate means
               something real. I wrote critical C++ modules, profiled under loads of 2,500 calls
               per second, and fixed faults that could not be reproduced in a simulator.
             </p>
